@@ -7,6 +7,8 @@ import android.content.res.Resources
 import android.net.wifi.WifiManager
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -28,6 +30,15 @@ class DashboardSettings : AppCompatActivity() {
         dashboardBinding = ActivityDashboardSettingsBinding.inflate(layoutInflater)
         setContentView(dashboardBinding.root)
         supportActionBar?.hide()
+
+        window.decorView.apply {
+            // Hide the status bar
+            systemUiVisibility = (View.SYSTEM_UI_FLAG_FULLSCREEN
+                    or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                    or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
+        }
+        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+
 
 //        val manager =
 //            applicationContext.getSystemService(Context.WINDOW_SERVICE) as WindowManager
